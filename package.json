@@ -1,0 +1,24 @@
+{
+  "name": "sonic-wave-music",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhamHoangThai2004/Sonic-Wave-music.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PhamHoangThai2004/Sonic-Wave-music/issues"
+  },
+  "homepage": "https://github.com/PhamHoangThai2004/Sonic-Wave-music#readme",
+  "dependencies": {
+    "zod": "^4.4.3"
+  }
+}
