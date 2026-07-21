@@ -18,7 +18,7 @@
     "url": "https://github.com/PhamHoangThai2004/Sonic-Wave-music/issues"
   },
   "homepage": "https://github.com/PhamHoangThai2004/Sonic-Wave-music#readme",
-  "dependencies": {
-    "zod": "^4.4.3"
+  "devDependencies": {
+    "supabase": "^2.109.1"
   }
 }
