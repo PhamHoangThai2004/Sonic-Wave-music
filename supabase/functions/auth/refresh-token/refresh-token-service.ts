@@ -46,7 +46,7 @@ export async function handleRefreshToken(req: Request) {
       refreshToken: data.session.refresh_token,
     };
 
-    return success(loginResponse, Messages.LOGIN_SUCCESS);
+    return success(loginResponse, Messages.REFRESH_TOKEN_SUCCESS);
   } catch (e) {
     return handleError(e);
   }

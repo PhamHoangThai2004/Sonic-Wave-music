@@ -5,10 +5,11 @@ export class RefreshTokenRequest {
     refreshToken: string;
 
     constructor(refreshToken: string | null) {
-      if (!refreshToken) {
+      const token = refreshToken?.trim();
+      if (!token) {
         throw new BadRequest(Messages.TOKEN_NOT_EMPTY);
       } else {
-        this.refreshToken = refreshToken.trim();
+        this.refreshToken = token;
       }
     }
 }
