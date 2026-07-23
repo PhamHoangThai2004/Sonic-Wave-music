@@ -1,6 +1,6 @@
-import { BadRequest } from "../exceptions/http-error.ts";
-import { Messages } from "../shared/constrain.ts";
-import { validateEmail, validatePassword } from "../utils/validate-utils.ts";
+import { BadRequest } from "../../../../../core/exceptions/http-error.ts";
+import { Messages } from "../../../../../core/shared/constrain.ts";
+import { validateEmail, validatePassword } from "../../../../../core/utils/validate-utils.ts";
 
 export class LoginRequest {
     email: string;

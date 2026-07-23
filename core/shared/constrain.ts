@@ -6,4 +6,6 @@ export const Messages = {
     PASSWORD_NOT_EMPTY: "Mật khẩu không được để trống",
     INVALID_CREDENTIALS: "Email hoặc mật khẩu không chính xác",
     LOGIN_SUCCESS: "Đăng nhập thành công",
+    TOKEN_NOT_EMPTY: "Token không được để trống",
+    INVALID_TOKEN: "Token đã hết hạn hoặc không hợp lệ",    
 };
