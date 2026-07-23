@@ -27,16 +27,6 @@ export async function handleLogin(req: Request) {
 
     const { email, password } = body;
     const loginRequest = new LoginRequest(email, password);
-    const emailError = loginRequest.emailError;
-    const passwordError = loginRequest.passwordError;
-
-    if (emailError) {
-      throw new BadRequest(emailError);
-    }
-
-    if (passwordError) {
-      throw new BadRequest(passwordError);
-    }
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
