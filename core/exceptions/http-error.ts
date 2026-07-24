@@ -37,6 +37,12 @@ export class MethodNotAllowed extends HttpError {
   }
 }
 
+export class Conflict extends HttpError {
+  constructor(message = "Conflict") {
+    super(409, message);
+  }
+}
+
 export class InternalServerError extends HttpError {
   constructor(message = "Internal Server Error") {
     super(500, message);
