@@ -1,5 +1,5 @@
 import { Messages } from "../shared/constrain.ts";
-import { isValidEmail, isValidName, isValidPassword } from "../shared/validation.ts";
+import { isValidEmail, isValidName, isValidOtp, isValidPassword } from "../shared/validation.ts";
 
 export function validateEmail(email: string): string | null {
   const value = email.trim();
@@ -30,6 +30,17 @@ export function validateName(name: string): string | null {
   }
   if (!isValidName(value)) {
     return Messages.INVALID_NAME;
+  }
+  return null;
+}
+
+export function validateOtp(otp: string): string | null {
+  const value = otp.trim();
+  if (!value || value.length === 0) {
+    return Messages.OTP_NOT_EMPTY;
+  }
+  if (!isValidOtp(value)) {
+    return Messages.INVALID_OTP;
   }
   return null;
 }

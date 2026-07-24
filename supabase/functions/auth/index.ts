@@ -1,9 +1,10 @@
 // deno-lint-ignore no-import-prefix
 // deno-lint-ignore-file
 import { Hono } from 'https://deno.land/x/hono@v4.3.11/mod.ts'
-import { handleLogin } from './login/login-service.ts'
-import { handleRefreshToken } from "./refresh-token/refresh-token-service.ts";
-import { handleCreateAccount } from "./register/register-service.ts";
+import { handleLogin } from './login/login.service.ts'
+import { handleRefreshToken } from "./refresh-token/refresh-token.service.ts";
+import { handleCreateAccount } from "./register/register.service.ts";
+import { handleVerifyOtp } from "./otp/verify-otp.service.ts";
 
 // Tạo app Hono và set basePath là '/auth'
 const app = new Hono().basePath('/auth')
@@ -21,6 +22,11 @@ app.post('/refresh-token', async (c) => {
 // Route: POST /functions/v1/auth/register
 app.post('/register', async (c) => {
   return await handleCreateAccount(c.req.raw)
+})
+
+// Route: POST /functions/v1/auth/verify-otp
+app.post('/verify-otp', async (c) => {
+  return await handleVerifyOtp(c.req.raw)
 })
 
 Deno.serve(app.fetch)

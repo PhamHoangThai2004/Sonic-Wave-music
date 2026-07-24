@@ -8,7 +8,7 @@ import {
 import { handleError, success } from "../../../../core/responses/response.ts";
 import { MethodRequest } from "../../../../core/utils/method-request.ts";
 import { Messages } from "../../../../core/shared/constrain.ts";
-import { RegisterRequest } from "./requests/register-request.ts";
+import { RegisterRequest } from "./requests/register.request.ts";
 
 const supabaseAdmin = createClient(
   Deno.env.get("SUPABASE_URL")!,

@@ -14,4 +14,10 @@ export const Messages = {
     REGISTER_SUCCESS: "Đăng ký thành công! Vui lòng kiểm tra email để nhận mã OTP xác thực",
     EMAIL_ALREADY_REGISTERED: "Email này đã được đăng ký",
     HAVE_ERROR: "Có lỗi xảy ra, vui lòng thử lại sau",
+    OTP_NOT_EMPTY: "Mã OTP không được để trống",
+    INVALID_OTP: "Mã OTP không hợp lệ",
+    OTP_TYPE_NOT_EMPTY: "Loại OTP không được để trống",
+    INVALID_OTP_TYPE: "Loại OTP không hợp lệ",
+    VERIFIED_SUCCESS: "Xác thực mã OTP thành công",
+    INVALID_OTP_EXPIRED: "Mã OTP đã hết hạn hoặc không hợp lệ",
 };

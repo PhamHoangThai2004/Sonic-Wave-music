@@ -8,10 +8,10 @@ import {
 import { handleError, success } from "../../../../core/responses/response.ts";
 import { MethodRequest } from "../../../../core/utils/method-request.ts";
 import { Messages } from "../../../../core/shared/constrain.ts";
-import { RefreshTokenRequest } from "./requests/refresh-token-request.ts";
-import { LoginResponse } from "../login/responses/login-response.ts";
+import { LoginRequest } from "./requests/login.request.ts";
+import { LoginResponse } from "./responses/login.response.ts";
 
-export async function handleRefreshToken(req: Request) {
+export async function handleLogin(req: Request) {
   try {
     if (!MethodRequest.isPost(req.method)) {
       throw new MethodNotAllowed();
@@ -22,23 +22,24 @@ export async function handleRefreshToken(req: Request) {
     try {
       body = await req.json();
     } catch {
-      throw new BadRequest(Messages.TOKEN_NOT_EMPTY);
+      throw new BadRequest(Messages.PLS_ENTER_INFO);
     }
 
-    const { refreshToken } = body;
-    const refreshTokenRequest = new RefreshTokenRequest(refreshToken);
+    const { email, password } = body;
+    const loginRequest = new LoginRequest(email, password);
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_ANON_KEY")!,
     );
 
-    const { data, error } = await supabase.auth.refreshSession({
-      refresh_token: refreshTokenRequest.refreshToken,
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: loginRequest.email,
+      password: loginRequest.password,
     });
 
     if (error || !data.session) {
-      throw new Unauthorized(Messages.INVALID_TOKEN);
+      throw new Unauthorized(Messages.INVALID_CREDENTIALS);
     }
 
     const loginResponse: LoginResponse = {
@@ -46,7 +47,7 @@ export async function handleRefreshToken(req: Request) {
       refreshToken: data.session.refresh_token,
     };
 
-    return success(loginResponse, Messages.REFRESH_TOKEN_SUCCESS);
+    return success(loginResponse, Messages.LOGIN_SUCCESS);
   } catch (e) {
     return handleError(e);
   }
